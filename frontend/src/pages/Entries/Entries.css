@@ -1,0 +1,115 @@
+/* Estilos específicos para la página Entrada de Productos */
+.entries-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Encabezado de la página */
+.entries-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Contador de entradas */
+.entries-count {
+  background-color: var(--primary-red);
+  color: var(--white);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Lista de entradas */
+.entries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Item de entrada */
+.entry-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--success);
+  transition: var(--transition);
+}
+
+.entry-item:hover {
+  background-color: var(--medium-gray);
+  transform: translateX(5px);
+}
+
+/* Información de la entrada */
+.entry-info {
+  flex: 1;
+}
+
+.entry-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.entry-details {
+  display: flex;
+  gap: 20px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.entry-amount {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.entry-date {
+  color: var(--dark-gray);
+}
+
+/* Mensaje sin entradas */
+.no-entries {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
+  margin-top: 20px;
+}
+
+.no-entries p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .entry-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .entry-details {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .entries-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .entries-count {
+    align-self: flex-start;
+  }
+}

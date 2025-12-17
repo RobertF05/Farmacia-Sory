@@ -1,0 +1,154 @@
+/* Estilos específicos para la página Medications */
+.medications-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Barra de búsqueda */
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.search-stats {
+  background-color: var(--primary-red);
+  color: var(--white);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Contenedor de la tabla */
+.medications-table-container {
+  overflow-x: auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin-top: 20px;
+}
+
+/* Tabla de medicamentos */
+.medications-table {
+  min-width: 800px;
+}
+
+.medications-table th {
+  background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+}
+
+/* Indicador de stock bajo */
+.low-stock {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+.low-stock::before {
+  content: "⚠ ";
+}
+
+/* Indicador de fecha próxima a caducar */
+.expiring-soon {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+/* Fecha caducada */
+.expired {
+  color: var(--primary-red);
+  font-weight: 600;
+}
+
+.expired::before {
+  content: "✗ ";
+}
+
+/* Mensaje sin resultados */
+.no-results {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
+  margin-top: 20px;
+}
+
+.no-results p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* Mensaje sin medicamentos */
+.no-medications {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
+  margin-top: 20px;
+}
+
+.no-medications p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .medications-table {
+    min-width: 600px;
+  }
+  
+  .search-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .search-box {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .medications-table {
+    min-width: 400px;
+  }
+}
+
+/* Estilos para estado de carga */
+.loading-message {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
+  margin-top: 20px;
+}
+
+.loading-message p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--medium-gray);
+  border-radius: 50%;
+  border-top-color: var(--primary-red);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

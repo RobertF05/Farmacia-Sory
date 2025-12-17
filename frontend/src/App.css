@@ -1,42 +1,140 @@
+/* Estilos para el contenedor principal */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Contenedor de la aplicación */
+.app-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Sidebar fijo - CORRECCIÓN */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+/* Sidebar visible en desktop */
+@media (min-width: 768px) {
+  .sidebar {
+    transform: translateX(0);
+    position: fixed;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* Sidebar activo en móvil */
+.sidebar.active {
+  transform: translateX(0);
+}
+
+/* Contenido principal - CORRECCIÓN IMPORTANTE */
+.main-content {
+  flex: 1;
+  width: 100%;
+  min-height: 100vh;
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
+
+/* En desktop, el contenido principal tiene margen para el sidebar */
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Header dentro del contenido principal */
+.header {
+  width: 100%;
+  background-color: var(--primary-red);
+  color: var(--white);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 900;
+}
+
+/* Contenedor de páginas */
+.page-container {
+  padding: 20px;
+  min-height: calc(100vh - 80px); /* Altura menos el header */
+  background-color: var(--white);
+  overflow-x: auto;
+}
+
+/* Botón para móviles */
+.sidebar-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1100;
+  background-color: var(--primary-red);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Ocultar botón en desktop */
+@media (min-width: 768px) {
+  .sidebar-toggle {
+    display: none;
   }
 }
 
-.card {
-  padding: 2em;
+/* Overlay para móviles */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
 }
 
-.read-the-docs {
-  color: #888;
+.sidebar.active + .sidebar-overlay {
+  display: block;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-red);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-red-dark);
 }

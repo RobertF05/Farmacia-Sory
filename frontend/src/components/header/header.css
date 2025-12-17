@@ -1,5 +1,52 @@
+/* Header Styles */
 .header {
-background: #2e7d32;
-color: white;
-padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  color: var(--white);
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* Info de usuario (opcional) */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--white);
+  color: var(--primary-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Responsive header */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 20px;
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .user-info span {
+    display: none;
+  }
 }

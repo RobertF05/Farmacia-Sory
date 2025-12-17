@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
-import { AppContext } from "../context/AppContext";
+import { AppContext } from "../../context/AppContext";
+import "./Medications.css";
 
 export default function Medications() {
 const { medications } = useContext(AppContext);
@@ -11,7 +12,7 @@ m.Name.toLowerCase().includes(search.toLowerCase())
 
 return (
 <div>
-    <h2>Medications</h2>
+    <h2>Todos los Productos</h2>
     <input
     placeholder="Search medication"
     value={search}

@@ -1,0 +1,134 @@
+/* Estilos específicos para la página Productos Caducados */
+.expired-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Encabezado con advertencia */
+.expired-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--warning);
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.expired-warning {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--warning);
+  font-weight: 600;
+  background-color: rgba(245, 124, 0, 0.1);
+  padding: 8px 15px;
+  border-radius: var(--border-radius);
+}
+
+.expired-count {
+  background-color: var(--warning);
+  color: var(--white);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Lista de productos caducados */
+.expired-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Item caducado */
+.expired-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--warning);
+  transition: var(--transition);
+}
+
+.expired-item:hover {
+  background-color: var(--medium-gray);
+  transform: translateX(5px);
+}
+
+/* Información del producto caducado */
+.expired-info {
+  flex: 1;
+}
+
+.expired-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.expired-details {
+  display: flex;
+  gap: 20px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.expired-date {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+/* Botón de acción para productos caducados */
+.expired-action-btn {
+  background-color: var(--warning);
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+.expired-action-btn:hover {
+  background-color: #e65100;
+}
+
+/* Mensaje sin productos caducados */
+.no-expired {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius);
+  margin-top: 20px;
+}
+
+.no-expired p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .expired-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .expired-details {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .expired-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .expired-warning {
+    font-size: 0.9rem;
+  }
+}

@@ -1,11 +1,76 @@
+/* Sidebar Styles */
 .sidebar {
-width: 200px;
-background: #f1f1f1;
-padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  background-color: var(--white);
+  overflow-y: auto;
 }
 
+/* Logo del sidebar */
+.sidebar-logo {
+  padding: 0 20px 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+.sidebar-logo h2 {
+  color: var(--primary-red);
+  margin: 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Botones del sidebar */
 .sidebar button {
-display: block;
-width: 100%;
-margin-bottom: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  text-align: left;
+  padding: 15px 25px;
+  margin: 5px 0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-left: 4px solid transparent;
+}
+
+.sidebar button:hover {
+  background-color: var(--light-gray);
+  color: var(--primary-red);
+  border-left-color: var(--primary-red);
+}
+
+/* Botón activo */
+.sidebar button.active {
+  background-color: var(--light-gray);
+  color: var(--primary-red);
+  border-left-color: var(--primary-red);
+  font-weight: 600;
+}
+
+/* Íconos (opcional - puedes agregarlos después) */
+.sidebar button::before {
+  content: "";
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+/* Personaliza cada botón con un ícono diferente */
+.sidebar button:nth-child(2)::before { content: "💊"; } /* Productos */
+.sidebar button:nth-child(3)::before { content: "✏️"; } /* Editar */
+.sidebar button:nth-child(4)::before { content: "💰"; } /* Ventas */
+.sidebar button:nth-child(5)::before { content: "📥"; } /* Entradas */
+.sidebar button:nth-child(6)::before { content: "⚠️"; } /* Caducados */
+
+/* Scrollbar del sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--primary-red-light);
 }
