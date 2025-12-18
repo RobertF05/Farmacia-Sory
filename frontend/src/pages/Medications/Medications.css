@@ -1,11 +1,13 @@
-/* Estilos específicos para la página Medications */
+/* Medications.css - Estilo actualizado sin marcadores de stock */
+
+/* Contenedor principal */
 .medications-container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
-/* Barra de búsqueda */
-.search-container {
+/* Encabezado de página */
+.medications-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,117 +16,209 @@
   gap: 15px;
 }
 
-.search-box {
-  flex: 1;
-  min-width: 300px;
-  max-width: 500px;
+.medications-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
 }
 
-.search-stats {
+/* Barra de herramientas */
+.medications-tools {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Contador */
+.medications-count {
   background-color: var(--primary-red);
   color: var(--white);
-  padding: 5px 15px;
-  border-radius: 20px;
+  padding: 6px 12px;
+  border-radius: 15px;
   font-weight: 600;
   font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-/* Contenedor de la tabla */
-.medications-table-container {
+/* Barra de búsqueda */
+.search-wrapper {
+  position: relative;
+  min-width: 250px;
+}
+
+.search-box {
+  width: 100%;
+  padding: 10px 15px 10px 40px;
+  border: 1px solid var(--medium-gray);
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: var(--white);
+  transition: var(--transition);
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+}
+
+.search-wrapper svg {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  fill: var(--dark-gray);
+}
+
+/* Sección de tabla */
+.medications-section {
+  background-color: var(--white);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.medications-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+/* Contenedor responsive para tabla */
+.table-responsive-container {
+  width: 100%;
   overflow-x: auto;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  margin-top: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--medium-gray);
 }
 
-/* Tabla de medicamentos */
+/* Tabla estilo Teachers */
 .medications-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  border-radius: 10px;
+  overflow: hidden;
   min-width: 800px;
 }
 
-.medications-table th {
-  background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+.medications-table thead {
+  background-color: #EDF9FD;
 }
 
-/* Indicador de stock bajo */
+.medications-table th {
+  padding: 15px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--medium-gray);
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Especificar anchos de columnas */
+.medications-table th:nth-child(1) { min-width: 180px; } /* Nombre */
+.medications-table th:nth-child(2) { min-width: 100px; } /* Cantidad */
+.medications-table th:nth-child(3) { min-width: 100px; } /* Precio */
+.medications-table th:nth-child(4) { min-width: 120x; } /* Fecha Expiración */
+
+.medications-table td {
+  padding: 15px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--medium-gray);
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+/* Alternar colores de filas */
+.medications-table tbody tr:nth-child(even) {
+  background-color: rgba(237, 249, 253, 0.3);
+}
+
+.medications-table tbody tr:hover {
+  background-color: rgba(237, 249, 253, 0.6);
+}
+
+/* Colores para cantidad baja */
 .low-stock {
   color: var(--warning);
   font-weight: 600;
+  position: relative;
+  padding-left: 20px;
 }
 
 .low-stock::before {
-  content: "⚠ ";
+  content: "⚠";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
 }
 
-/* Indicador de fecha próxima a caducar */
+/* Indicadores de fecha de expiración */
 .expiring-soon {
   color: var(--warning);
   font-weight: 600;
+  position: relative;
+  padding-left: 20px;
 }
 
-/* Fecha caducada */
+.expiring-soon::before {
+  content: "⏰";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+}
+
 .expired {
   color: var(--primary-red);
   font-weight: 600;
+  position: relative;
+  padding-left: 20px;
 }
 
 .expired::before {
-  content: "✗ ";
+  content: "✗";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+}
+
+/* Estilo para cantidad normal */
+.normal-stock {
+  color: var(--text-secondary);
 }
 
 /* Mensaje sin resultados */
-.no-results {
+.no-results, .no-medications {
   text-align: center;
   padding: 40px 20px;
   background-color: var(--light-gray);
   border-radius: var(--border-radius);
   margin-top: 20px;
+  border: 1px dashed var(--medium-gray);
 }
 
-.no-results p {
+.no-results p, .no-medications p {
   color: var(--text-secondary);
   margin-bottom: 20px;
+  font-size: 1rem;
 }
 
-/* Mensaje sin medicamentos */
-.no-medications {
-  text-align: center;
-  padding: 60px 20px;
-  background-color: var(--light-gray);
-  border-radius: var(--border-radius);
-  margin-top: 20px;
-}
-
-.no-medications p {
-  color: var(--text-secondary);
-  margin-bottom: 20px;
-  font-size: 1.1rem;
-}
-
-/* Responsividad */
-@media (max-width: 768px) {
-  .medications-table {
-    min-width: 600px;
-  }
-  
-  .search-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .search-box {
-    min-width: 100%;
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .medications-table {
-    min-width: 400px;
-  }
-}
-
-/* Estilos para estado de carga */
+/* Estado de carga */
 .loading-message {
   text-align: center;
   padding: 60px 20px;
@@ -136,19 +230,87 @@
 .loading-message p {
   color: var(--text-secondary);
   font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .loading-spinner {
   display: inline-block;
-  width: 50px;
-  height: 50px;
-  border: 3px solid var(--medium-gray);
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--medium-gray);
   border-radius: 50%;
   border-top-color: var(--primary-red);
-  animation: spin 1s ease-in-out infinite;
-  margin-bottom: 20px;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+/* Botón de limpiar filtros */
+.btn-clear-filters {
+  background: none;
+  border: 1px solid var(--medium-gray);
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+}
+
+.btn-clear-filters:hover {
+  background-color: var(--light-gray);
+  border-color: var(--dark-gray);
+  color: var(--text-primary);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .medications-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .medications-tools {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .search-wrapper {
+    min-width: 100%;
+  }
+  
+  .medications-section {
+    padding: 15px;
+  }
+  
+  .medications-table {
+    min-width: 700px;
+  }
+  
+  .medications-table th,
+  .medications-table td {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .medications-table {
+    min-width: 600px;
+  }
+  
+  .medications-table th:nth-child(5) {
+    min-width: 120px;
+  }
 }

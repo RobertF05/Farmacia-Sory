@@ -1,74 +1,154 @@
-/* Estilos específicos para la página Editar Productos */
+/* EditMedications.css - Estilo actualizado */
+
+/* Contenedor principal */
 .edit-medications-container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
-/* Contenedor de la tabla */
-.table-container {
-  overflow-x: auto;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  margin-top: 20px;
+/* Encabezado */
+.edit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-/* Estilos específicos para la tabla de edición */
+.edit-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.edit-count {
+  background-color: var(--primary-red);
+  color: var(--white);
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Sección de tabla */
+.edit-section {
+  background-color: var(--white);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Contenedor responsive */
+.table-responsive-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid var(--medium-gray);
+}
+
+/* Tabla estilo Teachers */
 .edit-table {
-  min-width: 800px;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 700px;
+}
+
+.edit-table thead {
+  background-color: #EDF9FD;
 }
 
 .edit-table th {
-  background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+  padding: 15px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--medium-gray);
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 14px;
+  white-space: nowrap;
 }
 
-.edit-table td:last-child {
-  text-align: center;
+/* Especificar anchos de columnas */
+.edit-table th:nth-child(1) { min-width: 180px; } /* Nombre */
+.edit-table th:nth-child(2) { min-width: 100px; } /* Cantidad */
+.edit-table th:nth-child(3) { min-width: 100px; } /* Precio */
+.edit-table th:nth-child(4) { min-width: 120px; } /* Acción */
+
+.edit-table td {
+  padding: 15px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--medium-gray);
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-size: 14px;
 }
 
-/* Botón de editar específico */
+/* Alternar colores de filas */
+.edit-table tbody tr:nth-child(even) {
+  background-color: rgba(237, 249, 253, 0.3);
+}
+
+.edit-table tbody tr:hover {
+  background-color: rgba(237, 249, 253, 0.6);
+}
+
+/* Botón de editar */
 .edit-btn {
-  background-color: var(--info);
+  background-color: var(--primary-red);
+  color: var(--white);
+  border: none;
   padding: 8px 16px;
-  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .edit-btn:hover {
-  background-color: #0277bd;
+  background-color: var(--primary-red);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Mensaje cuando no hay productos */
+.edit-btn:active {
+  transform: translateY(0);
+}
+
+/* Icono en botón */
+.edit-btn::before {
+  content: "✏️";
+  font-size: 12px;
+}
+
+/* Mensaje sin productos */
 .no-products-message {
   text-align: center;
   padding: 40px 20px;
   background-color: var(--light-gray);
   border-radius: var(--border-radius);
   margin-top: 20px;
+  border: 1px dashed var(--medium-gray);
 }
 
 .no-products-message p {
   color: var(--text-secondary);
   margin-bottom: 20px;
+  font-size: 1rem;
 }
 
-/* Responsividad */
-@media (max-width: 768px) {
-  .edit-table {
-    min-width: 600px;
-  }
-  
-  .edit-btn {
-    padding: 6px 12px;
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .edit-table {
-    min-width: 400px;
-  }
-}
-
-/* Estilos para estado de carga */
+/* Estado de carga */
 .loading-message {
   text-align: center;
   padding: 60px 20px;
@@ -80,4 +160,46 @@
 .loading-message p {
   color: var(--text-secondary);
   font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .edit-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .edit-section {
+    padding: 15px;
+  }
+  
+  .edit-table {
+    min-width: 600px;
+  }
+  
+  .edit-table th,
+  .edit-table td {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+  
+  .edit-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-table {
+    min-width: 500px;
+  }
+  
+  .edit-table th:nth-child(1) {
+    min-width: 150px;
+  }
 }
