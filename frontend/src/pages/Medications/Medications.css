@@ -314,3 +314,967 @@
     min-width: 120px;
   }
 }
+
+/* Botones de Acción */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.btn-action-primary,
+.btn-action-success,
+.btn-action-warning {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  flex: 1;
+  min-width: 200px;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn-action-primary {
+  background-color: var(--primary-red);
+}
+
+.btn-action-primary:hover {
+  background-color: var(--primary-red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(198, 40, 40, 0.2);
+}
+
+.btn-action-success {
+  background-color: var(--success);
+}
+
+.btn-action-success:hover {
+  background-color: #1b5e20;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+}
+
+.btn-action-warning {
+  background-color: var(--warning);
+}
+
+.btn-action-warning:hover {
+  background-color: #e65100;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 124, 0, 0.2);
+}
+
+.btn-action-primary span,
+.btn-action-success span,
+.btn-action-warning span {
+  font-size: 16px;
+}
+
+/* Botón para agregar primer producto */
+.btn-add-first {
+  background-color: var(--primary-red);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 15px;
+  transition: var(--transition);
+}
+
+.btn-add-first:hover {
+  background-color: var(--primary-red-dark);
+}
+
+/* Modal Backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-content h3 {
+  color: var(--primary-red);
+  margin-bottom: 25px;
+  font-size: 22px;
+  text-align: center;
+}
+
+/* Formularios en modal */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--medium-gray);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+}
+
+/* Grupo de búsqueda de producto */
+.search-product-group {
+  display: flex;
+  gap: 10px;
+}
+
+.search-product-group input {
+  flex: 1;
+}
+
+.btn-search {
+  background-color: var(--primary-red);
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-search:hover {
+  background-color: var(--primary-red-dark);
+}
+
+/* Información del producto encontrado */
+.product-info {
+  background-color: var(--light-gray);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  border-left: 4px solid var(--primary-red);
+}
+
+.product-info h4 {
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.product-info p {
+  margin: 8px 0;
+  color: var(--text-secondary);
+}
+
+.product-info strong {
+  color: var(--text-primary);
+  min-width: 140px;
+  display: inline-block;
+}
+
+/* Resumen de venta y restock */
+.sale-summary,
+.restock-summary {
+  background-color: #e8f5e9;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border-left: 4px solid var(--success);
+}
+
+.sale-summary p,
+.restock-summary p {
+  margin: 8px 0;
+  color: var(--text-primary);
+}
+
+/* Acciones del modal */
+.modal-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  justify-content: flex-end;
+}
+
+.btn-confirm {
+  background-color: var(--success);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+  min-width: 150px;
+}
+
+.btn-confirm:hover:not(:disabled) {
+  background-color: #1b5e20;
+  transform: translateY(-1px);
+}
+
+.btn-confirm:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  background-color: var(--light-gray);
+  color: var(--text-secondary);
+  border: 1px solid var(--medium-gray);
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+  min-width: 100px;
+}
+
+.btn-cancel:hover {
+  background-color: var(--medium-gray);
+  color: var(--text-primary);
+}
+
+/* Notificaciones */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  z-index: 3000;
+  animation: slideInRight 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.notification.success {
+  background-color: var(--success);
+  border-left: 4px solid #1b5e20;
+}
+
+.notification.error {
+  background-color: var(--primary-red);
+  border-left: 4px solid var(--primary-red-dark);
+}
+
+/* Responsividad para modales */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 20px;
+    max-width: 95%;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .btn-action-primary,
+  .btn-action-success,
+  .btn-action-warning {
+    min-width: 100%;
+  }
+  
+  .search-product-group {
+    flex-direction: column;
+  }
+  
+  .btn-search {
+    padding: 12px;
+    width: 100%;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .btn-confirm,
+  .btn-cancel {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-info strong {
+    min-width: 120px;
+  }
+  
+  .notification {
+    left: 20px;
+    right: 20px;
+    max-width: calc(100% - 40px);
+  }
+}
+
+/* Agregar al archivo Medications.css */
+
+/* Mejora para búsqueda de productos en modales */
+.search-product-group {
+  display: flex;
+  gap: 10px;
+}
+
+.search-product-group input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid var(--medium-gray);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.search-product-group input:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+}
+
+.btn-search {
+  background-color: var(--primary-red);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-search:hover {
+  background-color: var(--primary-red-dark);
+  transform: translateY(-1px);
+}
+
+/* Estado de producto no encontrado */
+.product-not-found {
+  background-color: #ffebee;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border-left: 4px solid var(--primary-red);
+  color: var(--primary-red-dark);
+  text-align: center;
+}
+
+/* Responsividad para búsqueda */
+@media (max-width: 768px) {
+  .search-product-group {
+    flex-direction: column;
+  }
+  
+  .btn-search {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* Medications.css - Estilos para búsqueda en tiempo real en modales */
+
+/* Lista de productos en modal */
+.modal-products-list {
+  margin: 20px 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.modal-products-list h4 {
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Tabla de productos en modal */
+.modal-products-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--medium-gray);
+}
+
+.modal-products-table thead {
+  background-color: #EDF9FD;
+}
+
+.modal-products-table th {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--medium-gray);
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.modal-products-table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--medium-gray);
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-size: 13px;
+}
+
+/* Filas seleccionables */
+.selectable-row {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.selectable-row:hover {
+  background-color: rgba(237, 249, 253, 0.6);
+}
+
+.selectable-row.selected {
+  background-color: rgba(198, 40, 40, 0.1);
+}
+
+/* Botón para seleccionar producto */
+.btn-select-product {
+  background-color: var(--primary-red);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-select-product:hover {
+  background-color: var(--primary-red-dark);
+  transform: translateY(-1px);
+}
+
+/* Información del producto seleccionado */
+.selected-product-info {
+  background-color: rgba(237, 249, 253, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  border-left: 4px solid var(--primary-red);
+}
+
+.selected-product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.selected-product-header h4 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 16px;
+}
+
+.btn-change-product {
+  background: none;
+  border: 1px solid var(--medium-gray);
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-change-product:hover {
+  background-color: var(--light-gray);
+  color: var(--text-primary);
+}
+
+.product-details p {
+  margin: 8px 0;
+  color: var(--text-secondary);
+}
+
+.product-details strong {
+  color: var(--text-primary);
+  min-width: 120px;
+  display: inline-block;
+}
+
+/* Sin productos encontrados */
+.no-products-found {
+  text-align: center;
+  padding: 30px;
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  border: 1px dashed var(--medium-gray);
+  color: var(--text-secondary);
+}
+
+/* Mejoras para el input de búsqueda en modal */
+.search-product-group input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid var(--medium-gray);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.search-product-group input:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+}
+
+/* Scrollbar para la lista de productos */
+.modal-products-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-products-list::-webkit-scrollbar-track {
+  background: var(--light-gray);
+  border-radius: 3px;
+}
+
+.modal-products-list::-webkit-scrollbar-thumb {
+  background: var(--primary-red-light);
+  border-radius: 3px;
+}
+
+.modal-products-list::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-red);
+}
+
+/* Responsividad para tablas en modales */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 15px;
+  }
+  
+  .modal-products-table {
+    min-width: 500px;
+  }
+  
+  .modal-products-table th,
+  .modal-products-table td {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+  
+  .selected-product-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .btn-change-product {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-products-table {
+    min-width: 400px;
+  }
+  
+  .btn-select-product {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+}
+
+/* Medications.css - Estilos para ventas múltiples y actualización automática */
+
+/* Cabecera del modal con pasos */
+.modal-header-with-steps {
+  margin-bottom: 20px;
+}
+
+.sale-steps {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.step {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: var(--light-gray);
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.step.active {
+  background-color: var(--primary-red);
+  color: white;
+}
+
+.step-arrow {
+  color: var(--text-secondary);
+}
+
+/* Contador de productos seleccionados */
+.selected-count {
+  margin-left: 10px;
+  font-size: 14px;
+  color: var(--primary-red);
+  font-weight: 600;
+}
+
+/* Checkbox para seleccionar productos */
+.modal-products-table input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--primary-red);
+}
+
+/* Input de cantidad */
+.quantity-input {
+  width: 70px;
+  padding: 6px 8px;
+  border: 1px solid var(--medium-gray);
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.quantity-input:focus {
+  outline: none;
+  border-color: var(--primary-red);
+}
+
+.not-selected {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Botón para quitar producto */
+.btn-remove-product {
+  background-color: var(--primary-red);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-remove-product:hover {
+  background-color: #8e0000;
+}
+
+/* Resumen de productos seleccionados */
+.selected-products-summary {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: rgba(237, 249, 253, 0.5);
+  border-radius: 10px;
+  border: 1px solid var(--medium-gray);
+}
+
+.selected-products-summary h4 {
+  margin-bottom: 15px;
+  color: var(--text-primary);
+  font-size: 16px;
+}
+
+/* Tabla de resumen */
+.summary-table-container {
+  margin: 15px 0;
+  overflow-x: auto;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.summary-table thead {
+  background-color: #EDF9FD;
+}
+
+.summary-table th {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--medium-gray);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.summary-table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--medium-gray);
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.summary-table tfoot {
+  background-color: rgba(237, 249, 253, 0.8);
+}
+
+.total-label {
+  text-align: right;
+  color: var(--text-primary);
+}
+
+.total-amount {
+  color: var(--primary-red);
+  font-size: 16px;
+}
+
+/* Botón secundario */
+.btn-secondary {
+  background-color: var(--light-gray);
+  color: var(--text-secondary);
+  border: 1px solid var(--medium-gray);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.btn-secondary:hover {
+  background-color: var(--medium-gray);
+  color: var(--text-primary);
+}
+
+/* Mejoras para la tabla de productos en modal */
+.modal-products-table th:nth-child(1) {
+  width: 30px;
+}
+
+.modal-products-table th:nth-child(5) {
+  width: 100px;
+}
+
+.modal-products-table th:nth-child(6) {
+  width: 100px;
+}
+
+/* Efecto de selección más claro */
+.selectable-row.selected {
+  background-color: rgba(198, 40, 40, 0.08);
+}
+
+.selectable-row.selected:hover {
+  background-color: rgba(198, 40, 40, 0.12);
+}
+
+/* Animación para actualización */
+@keyframes fadeIn {
+  from { opacity: 0.8; }
+  to { opacity: 1; }
+}
+
+.medications-table tbody tr {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Estado de "no seleccionado" para aumentar stock */
+.modal-products-list h4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Responsividad para ventas múltiples */
+@media (max-width: 768px) {
+  .sale-steps {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .step-arrow {
+    display: none;
+  }
+  
+  .modal-products-table {
+    min-width: 600px;
+  }
+  
+  .quantity-input {
+    width: 60px;
+  }
+  
+  .summary-table {
+    min-width: 500px;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .modal-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-products-table {
+    min-width: 450px;
+  }
+  
+  .summary-table {
+    min-width: 400px;
+  }
+  
+  .selected-count {
+    display: block;
+    margin-left: 0;
+    margin-top: 5px;
+  }
+}
+
+/* Mejoras para el input de cantidad */
+.quantity-input {
+  width: 70px;
+  padding: 6px 8px;
+  border: 1px solid var(--medium-gray);
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.quantity-input:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 2px rgba(198, 40, 40, 0.1);
+}
+
+.quantity-input:invalid {
+  border-color: var(--warning);
+}
+
+/* Estilo para el total en resumen */
+.total-amount {
+  color: var(--primary-red);
+  font-size: 16px;
+  text-align: right;
+  padding-right: 20px;
+}
+
+/* Mejoras para subtotales */
+.summary-table td:nth-child(4) {
+  color: var(--success);
+  font-weight: 500;
+}
+
+/* Indicador de stock bajo en resumen */
+.summary-table td:nth-child(5).low-stock {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+.summary-table td:nth-child(5).low-stock::before {
+  content: "⚠ ";
+  font-size: 12px;
+}
+
+/* Spinner para procesamiento de venta */
+.processing-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+/* Deshabilitar botón durante procesamiento */
+.btn-confirm:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Mejoras para notificaciones de error */
+.notification.error {
+  background-color: var(--primary-red);
+  border-left: 4px solid #8e0000;
+}
+
+.notification.warning {
+  background-color: var(--warning);
+  border-left: 4px solid #e65100;
+  color: white;
+}
