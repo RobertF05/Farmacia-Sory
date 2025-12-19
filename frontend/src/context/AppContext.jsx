@@ -28,31 +28,49 @@ export const AppProvider = ({ children }) => {
     }
   }, [API_URL]);
 
-  // Agregar nuevo producto
-  const addMedication = async (medication) => {
-    try {
-      const res = await fetch(`${API_URL}/medications`, {
+// Agregar nuevo producto - CORREGIDO con movimiento "nuevo"
+const addMedication = async (medication) => {
+  try {
+    const res = await fetch(`${API_URL}/medications`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(medication),
+    });
+    
+    if (res.ok) {
+      const newMedication = await res.json();
+      const addedMedication = Array.isArray(newMedication) ? newMedication[0] : newMedication;
+      setMedications(prev => [...prev, addedMedication]);
+      
+      // Registrar movimiento de tipo "nuevo" para este producto
+      const movementData = {
+        Type: "nuevo",
+        Amount: addedMedication.Amount || medication.Amount || 0,
+        MovementDate: new Date().toISOString(),
+        medicationID: addedMedication.medicationID,
+        ExpirationDate: addedMedication.ExpirationDate || medication.ExpirationDate || null
+      };
+      
+      await fetch(`${API_URL}/movements`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(medication),
+        body: JSON.stringify(movementData),
       });
       
-      if (res.ok) {
-        const newMedication = await res.json();
-        const addedMedication = Array.isArray(newMedication) ? newMedication[0] : newMedication;
-        setMedications(prev => [...prev, addedMedication]);
-        return { success: true, data: addedMedication };
-      } else {
-        const errorData = await res.json();
-        return { success: false, error: errorData.error || "Error al agregar producto" };
-      }
-    } catch (error) {
-      console.error("Error adding medication:", error);
-      return { success: false, error: "Error de conexión" };
+      return { success: true, data: addedMedication };
+    } else {
+      const errorData = await res.json();
+      return { success: false, error: errorData.error || "Error al agregar producto" };
     }
-  };
+  } catch (error) {
+    console.error("Error adding medication:", error);
+    return { success: false, error: "Error de conexión" };
+  }
+};
 
   // Actualizar medicamento (para ventas y restock)
   const updateMedication = async (id, updatedData) => {

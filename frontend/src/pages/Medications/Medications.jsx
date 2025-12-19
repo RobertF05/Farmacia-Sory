@@ -847,7 +847,6 @@ const handleSellProducts = async () => {
             <table className="medications-table">
               <thead>
                 <tr>
-                  <th>No</th>
                   <th>Nombre</th>
                   <th>Cantidad</th>
                   <th>Precio</th>
@@ -857,7 +856,6 @@ const handleSellProducts = async () => {
               <tbody>
                 {filtered.map((m, index) => (
                   <tr key={m.medicationID}>
-                    <td>{String(index + 1).padStart(2, '0')}</td>
                     <td style={{ color: "black", fontWeight: "500" }}>{m.Name || "Sin nombre"}</td>
                     <td className={getStockClass(m.Amount)}>
                       {m.Amount || 0}
