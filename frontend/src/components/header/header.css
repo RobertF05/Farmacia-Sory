@@ -1,52 +1,116 @@
-/* Header Styles */
+/* Header.css - Versión corregida */
 .header {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 30px;
+  padding: 15px 20px;
   background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
   color: var(--white);
   box-shadow: var(--shadow);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 70px;
+  box-sizing: border-box;
 }
 
-.header h1 {
+/* Botón hamburguesa */
+.menu-toggle-btn {
+  background: none;
+  border: none;
   color: var(--white);
-  margin: 0;
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-/* Info de usuario (opcional) */
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.user-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--white);
-  color: var(--primary-red);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  min-width: 44px;
+  min-height: 44px;
+  transition: background-color 0.3s ease;
+  z-index: 1001;
 }
 
-/* Responsive header */
+.menu-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Centro del header */
+.header-center {
+  flex: 1;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.header-center h1 {
+  color: var(--white);
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Lado derecho del header */
+.header-right {
+  min-width: 44px;
+  visibility: hidden;
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Desktop */
+@media (min-width: 769px) {
+  .header {
+    position: relative;
+    height: auto;
+    padding: 15px 30px;
+  }
+  
+  .menu-toggle-btn {
+    display: none;
+  }
+  
+  .header-center h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Tablet y móvil */
 @media (max-width: 768px) {
   .header {
-    padding: 15px 20px;
+    padding: 12px 15px;
+    height: 64px;
   }
   
-  .header h1 {
-    font-size: 1.5rem;
+  .header-center h1 {
+    font-size: 1.3rem;
   }
   
-  .user-info span {
-    display: none;
+  .menu-toggle-btn {
+    font-size: 1.3rem;
+  }
+}
+
+/* Móvil pequeño */
+@media (max-width: 480px) {
+  .header {
+    padding: 10px;
+    height: 60px;
+  }
+  
+  .header-center h1 {
+    font-size: 1.2rem;
+  }
+  
+  .menu-toggle-btn {
+    font-size: 1.2rem;
+    min-width: 40px;
+    min-height: 40px;
   }
 }

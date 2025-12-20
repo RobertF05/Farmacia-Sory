@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useContext } from "react";
 import "./Sales.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
@@ -15,6 +15,7 @@ import {
   faCalendarWeek,
   faCalendarAlt
 } from '@fortawesome/free-solid-svg-icons';
+import { AppContext } from "../../context/AppContext";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -27,16 +28,16 @@ const TIME_FILTERS = {
 };
 
 export default function Sales() {
+  const { medications, formatNicaraguaDate, formatNicaraguaTime, formatNicaraguaDateTime } = useContext(AppContext);
   const [sales, setSales] = useState([]);
-  const [medications, setMedications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState(null);
   const [timeFilter, setTimeFilter] = useState(TIME_FILTERS.TODAY);
-  const [showDateFilter, setShowDateFilter] = useState(false);
+  const [showDateFilter, setShowDateFilter] = useState(true);
   const [expandedSales, setExpandedSales] = useState({});
 
   useEffect(() => {
-    Promise.all([fetchSales(), fetchMedications()]);
+    fetchSales();
   }, []);
 
   const fetchSales = async () => {
@@ -67,18 +68,6 @@ export default function Sales() {
       console.error("Error fetching sales:", error);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const fetchMedications = async () => {
-    try {
-      const res = await fetch(`${API_URL}/medications`);
-      if (res.ok) {
-        const data = await res.json();
-        setMedications(data);
-      }
-    } catch (error) {
-      console.error("Error fetching medications:", error);
     }
   };
 
@@ -213,26 +202,7 @@ export default function Sales() {
     return groupSalesByMinute(filteredSales);
   }, [sales, medications, timeFilter, selectedDate]);
 
-  // Funciones de formato
-  const formatDate = (dateString) => {
-    if (!dateString) return "Fecha no disponible";
-    
-    try {
-      const date = new Date(dateString);
-      if (isNaN(date.getTime())) return "Fecha inválida";
-      
-      return date.toLocaleDateString('es-NI', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-    } catch (error) {
-      return "Fecha inválida";
-    }
-  };
-
+  // Funciones de formato usando el contexto
   const formatShortDate = (dateString) => {
     if (!dateString) return "";
     
@@ -258,22 +228,6 @@ export default function Sales() {
       if (isNaN(date.getTime())) return "";
       
       return date.toLocaleDateString('es-NI', { weekday: 'long' });
-    } catch (error) {
-      return "";
-    }
-  };
-
-  const formatTime = (dateString) => {
-    if (!dateString) return "";
-    
-    try {
-      const date = new Date(dateString);
-      if (isNaN(date.getTime())) return "";
-      
-      return date.toLocaleTimeString('es-NI', {
-        hour: '2-digit',
-        minute: '2-digit'
-      });
     } catch (error) {
       return "";
     }
@@ -523,7 +477,7 @@ export default function Sales() {
               >
                 <div className="sale-header-info">
                   <div className="sale-date-time">
-                    <h3 className="sale-main-date">{formatDate(group.transactionDate)}</h3>
+                    <h3 className="sale-main-date">{formatNicaraguaDateTime(group.transactionDate)}</h3>
                     <span className="sale-day">{formatDayName(group.transactionDate)}</span>
                   </div>
                   <div className="sale-header-summary">

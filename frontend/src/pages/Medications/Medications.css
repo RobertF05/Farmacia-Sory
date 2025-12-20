@@ -57,12 +57,18 @@
   font-size: 14px;
   background-color: var(--white);
   transition: var(--transition);
+  color: var(--text-primary); /* AÑADE ESTA LÍNEA */
 }
 
 .search-box:focus {
   outline: none;
   border-color: var(--primary-red);
   box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+}
+
+.search-box::placeholder {
+  color: var(--text-secondary); /* AÑADE ESTA LÍNEA PARA EL PLACEHOLDER */
+  opacity: 0.7;
 }
 
 .search-wrapper svg {

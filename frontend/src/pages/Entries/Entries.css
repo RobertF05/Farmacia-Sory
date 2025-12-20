@@ -1,6 +1,6 @@
 /* Entries.css - Estilo actualizado con los mismos filtros que Sales */
 
-/* Añade estas variables CSS al principio de Entries.css */
+/* Variables CSS */
 :root {
   /* ... otras variables ... */
   --nuevo-product: #805ad5;  /* Morado para producto nuevo */
@@ -11,111 +11,27 @@
   --filter-active: #4299e1;
 }
 
-/* Actualiza las clases de stat-card para incluir el nuevo tipo */
-.stat-card.new {
-  border-top: 4px solid var(--nuevo-product);
-}
-
-.stat-card.entrada {
-  border-top: 4px solid var(--entrada-stock);
-}
-
-.stat-card.restock {
-  border-top: 4px solid var(--restock);
-}
-
-/* Estilos para los iconos de estadísticas */
-.stat-card.new .stat-icon {
-  background: rgba(128, 90, 213, 0.1);
-  color: var(--nuevo-product);
-}
-
-.stat-card.entrada .stat-icon {
-  background: rgba(49, 130, 206, 0.1);
-  color: var(--entrada-stock);
-}
-
-.stat-card.restock .stat-icon {
-  background: rgba(56, 161, 105, 0.1);
-  color: var(--restock);
-}
-
-/* Añade esta clase para resaltar productos nuevos */
-.highlight-new {
-  background: rgba(128, 90, 213, 0.1);
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  margin-top: 0.5rem;
-  color: var(--nuevo-product);
-  font-weight: 500;
-  text-align: center;
-}
-
-/* Para la cuadrícula de estadísticas, ajusta para 5 elementos */
-.entries-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-}
-
-@media (max-width: 1200px) {
-  .entries-stats {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  }
-}
-
-@media (max-width: 768px) {
-  .entries-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .entries-stats {
-    grid-template-columns: 1fr;
-  }
-}
-
-:root {
-  --text-primary: #2d3748;
-  --text-secondary: #4a5568;
-  --bg-primary: #ffffff;
-  --bg-secondary: #f7fafc;
-  --border-color: #e2e8f0;
-  --primary-red: #BA0505;
-  --primary-red-dark: #8e0000;
-  --success: #38a169;
-  --warning: #dd6b20;
-  --info: #3182ce;
-  --entrada: #38a169;
-  --salida: #e53e3e;
-  --new-product: #3182ce;
-  --restock: #38a169;
-  --total-entries: #805ad5;
-  --total-products: #dd6b20;
-  --filter-active: #4299e1;
-}
-
-/* Contenedor principal */
+/* Contenedor principal - CORREGIDO */
 .entries-container {
-  width: min(90vw, 1200px);
-  margin: 2rem auto;
-  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
   background: var(--bg-primary);
   border-radius: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.5s ease-in-out;
+  box-sizing: border-box;
 }
 
-/* Header */
+/* Header - CORREGIDO */
 .entries-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem; /* CORRECCIÓN: Reducido de 2rem */
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1rem; /* CORRECCIÓN: Reducido de 1.5rem */
 }
 
 .header-left h2 {
@@ -351,6 +267,19 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
+/* Actualiza las clases de stat-card para incluir el nuevo tipo */
+.stat-card.new {
+  border-top: 4px solid var(--nuevo-product);
+}
+
+.stat-card.entrada {
+  border-top: 4px solid var(--entrada-stock);
+}
+
+.stat-card.restock {
+  border-top: 4px solid var(--restock);
+}
+
 .stat-card.total {
   border-top: 4px solid var(--total-entries);
 }
@@ -359,14 +288,7 @@
   border-top: 4px solid var(--total-products);
 }
 
-.stat-card.new {
-  border-top: 4px solid var(--new-product);
-}
-
-.stat-card.restock {
-  border-top: 4px solid var(--restock);
-}
-
+/* Estilos para los iconos de estadísticas */
 .stat-icon {
   width: 60px;
   height: 60px;
@@ -389,7 +311,12 @@
 
 .stat-card.new .stat-icon {
   background: rgba(49, 130, 206, 0.1);
-  color: var(--new-product);
+  color: var(--entrada-stock);
+}
+
+.stat-card.entrada .stat-icon {
+  background: rgba(49, 130, 206, 0.1);
+  color: var(--entrada-stock);
 }
 
 .stat-card.restock .stat-icon {
@@ -622,6 +549,17 @@
   border-bottom: none;
 }
 
+/* Añade esta clase para resaltar productos nuevos */
+.highlight-new {
+  background: rgba(128, 90, 213, 0.1);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  color: var(--nuevo-product);
+  font-weight: 500;
+  text-align: center;
+}
+
 /* Loading state */
 .loading-state {
   text-align: center;
@@ -669,16 +607,29 @@
   }
 }
 
+/* Para la cuadrícula de estadísticas, ajusta para 5 elementos */
+@media (max-width: 1200px) {
+  .entries-stats {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .entries-container {
-    padding: 1.5rem;
-    margin: 1rem auto;
+    padding: 1rem; /* CORRECCIÓN: Reducido para móvil */
+    margin: 0 auto;
   }
   
   .entries-header {
     flex-direction: column;
     align-items: stretch;
+    margin-bottom: 1rem; /* CORRECCIÓN: Reducido para móvil */
+    gap: 0.75rem;
+  }
+  
+  .header-left h2 {
+    font-size: 1.5rem; /* CORRECCIÓN: Reducido para móvil */
   }
   
   .header-right {
@@ -692,6 +643,8 @@
   
   .entries-stats {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
   }
   
   .time-filter-buttons {
@@ -721,15 +674,31 @@
   .entry-detail-label {
     min-width: auto;
   }
+  
+  .date-filter-section {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .stat-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
   .entries-container {
-    padding: 1rem;
+    padding: 0.75rem; /* CORRECCIÓN: Mínimo padding en móvil pequeño */
   }
   
   .header-left h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   
   .stat-card {
@@ -745,5 +714,9 @@
   .amount-badge {
     font-size: 1rem;
     padding: 0.4rem 0.8rem;
+  }
+  
+  .entries-stats {
+    grid-template-columns: 1fr;
   }
 }

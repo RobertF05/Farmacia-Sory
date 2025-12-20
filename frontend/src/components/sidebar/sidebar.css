@@ -1,10 +1,24 @@
-/* Sidebar Styles */
+/* Sidebar.css - Versión corregida */
 .sidebar {
   display: flex;
   flex-direction: column;
   padding: 20px 0;
   background-color: var(--white);
   overflow-y: auto;
+  position: fixed;
+  left: 0;
+  width: 280px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid var(--medium-gray);
+  height: calc(100vh - 70px);
+  top: 70px;
+}
+
+.sidebar.active {
+  transform: translateX(0);
 }
 
 /* Logo del sidebar */
@@ -12,6 +26,7 @@
   padding: 0 20px 20px;
   margin-bottom: 20px;
   border-bottom: 1px solid var(--medium-gray);
+  display: none;
 }
 
 .sidebar-logo h2 {
@@ -36,6 +51,8 @@
   align-items: center;
   width: 100%;
   border-left: 4px solid transparent;
+  min-height: 50px;
+  box-sizing: border-box;
 }
 
 .sidebar button:hover {
@@ -44,7 +61,6 @@
   border-left-color: var(--primary-red);
 }
 
-/* Botón activo */
 .sidebar button.active {
   background-color: var(--light-gray);
   color: var(--primary-red);
@@ -52,25 +68,62 @@
   font-weight: 600;
 }
 
-/* Íconos (opcional - puedes agregarlos después) */
+/* Íconos */
 .sidebar button::before {
   content: "";
   margin-right: 10px;
   font-size: 1.2rem;
+  min-width: 24px;
+  text-align: center;
 }
 
-/* Personaliza cada botón con un ícono diferente */
-.sidebar button:nth-child(2)::before { content: "💊"; } /* Productos */
-.sidebar button:nth-child(3)::before { content: "✏️"; } /* Editar */
-.sidebar button:nth-child(4)::before { content: "💰"; } /* Ventas */
-.sidebar button:nth-child(5)::before { content: "📥"; } /* Entradas */
-.sidebar button:nth-child(6)::before { content: "⚠️"; } /* Caducados */
+.sidebar button:nth-child(2)::before { content: "💊"; }
+.sidebar button:nth-child(3)::before { content: "✏️"; }
+.sidebar button:nth-child(4)::before { content: "💰"; }
+.sidebar button:nth-child(5)::before { content: "📥"; }
+.sidebar button:nth-child(6)::before { content: "⚠️"; }
 
-/* Scrollbar del sidebar */
+/* Scrollbar */
 .sidebar::-webkit-scrollbar {
   width: 4px;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
   background: var(--primary-red-light);
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Desktop */
+@media (min-width: 769px) {
+  .sidebar {
+    position: fixed;
+    transform: translateX(0);
+    height: 100vh;
+    top: 0;
+  }
+  
+  .sidebar-logo {
+    display: block;
+  }
+}
+
+/* Móvil */
+@media (max-width: 768px) {
+  .sidebar {
+    height: calc(100vh - 64px);
+    top: 64px;
+  }
+  
+  .sidebar button {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Móvil pequeño */
+@media (max-width: 360px) {
+  .sidebar {
+    width: 250px;
+  }
 }

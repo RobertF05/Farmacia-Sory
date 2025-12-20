@@ -12,6 +12,11 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState("medications");
   const [sidebarActive, setSidebarActive] = useState(false);
 
+  // Función para alternar el sidebar
+  const toggleSidebar = () => {
+    setSidebarActive(!sidebarActive);
+  };
+
   const renderPage = () => {
     switch (currentPage) {
       case "medications":
@@ -31,37 +36,34 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {/* Botón para móviles */}
-      <button 
-        className="sidebar-toggle" 
-        onClick={() => setSidebarActive(!sidebarActive)}
-        aria-label="Toggle sidebar"
-      >
-        ☰
-      </button>
-      
-      {/* Sidebar */}
-      <Sidebar 
-        setPage={setCurrentPage} 
-        active={sidebarActive}
-        setActive={setSidebarActive}
-        currentPage={currentPage}
+      {/* Header con botón de hamburguesa */}
+      <Header 
+        toggleSidebar={toggleSidebar} 
+        sidebarActive={sidebarActive}
       />
       
-      {/* Overlay para móviles */}
+      {/* Overlay para cerrar sidebar en móviles */}
       {sidebarActive && (
         <div 
-          className="sidebar-overlay" 
+          className="sidebar-overlay"
           onClick={() => setSidebarActive(false)}
-        />
+        ></div>
       )}
       
-      {/* Contenido principal */}
       <div className="main-content">
-        <Header />
-        <div className="page-container">
+        {/* Sidebar */}
+        <Sidebar 
+          setPage={setCurrentPage}
+          active={sidebarActive}
+          setActive={setSidebarActive}
+          currentPage={currentPage}
+        />
+        
+        {/* Contenido principal */}
+        <main className="content-area">
+          {/* Renderizar la página actual */}
           {renderPage()}
-        </div>
+        </main>
       </div>
     </div>
   );

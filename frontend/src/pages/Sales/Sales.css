@@ -20,25 +20,27 @@
   --filter-active: #4299e1;
 }
 
-/* Contenedor principal */
+/* Contenedor principal - CORREGIDO */
 .sales-container {
-  width: min(90vw, 1200px);
-  margin: 2rem auto;
-  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
   background: var(--bg-primary);
   border-radius: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.5s ease-in-out;
+  box-sizing: border-box;
 }
 
-/* Header */
+/* Header - CORREGIDO */
 .sales-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem; /* CORRECCIÓN: Reducido de 2rem */
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1rem; /* CORRECCIÓN: Reducido de 1.5rem */
 }
 
 .header-left h2 {
@@ -624,13 +626,19 @@
 /* Responsive */
 @media (max-width: 768px) {
   .sales-container {
-    padding: 1.5rem;
-    margin: 1rem auto;
+    padding: 1rem; /* CORRECCIÓN: Reducido para móvil */
+    margin: 0 auto;
   }
   
   .sales-header {
     flex-direction: column;
     align-items: stretch;
+    margin-bottom: 1rem; /* CORRECCIÓN: Reducido para móvil */
+    gap: 0.75rem;
+  }
+  
+  .header-left h2 {
+    font-size: 1.5rem; /* CORRECCIÓN: Reducido para móvil */
   }
   
   .header-right {
@@ -644,6 +652,8 @@
   
   .sales-stats {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
   }
   
   .time-filter-buttons {
@@ -682,15 +692,31 @@
   .sale-item-subtotal {
     justify-content: space-between;
   }
+  
+  .date-filter-section {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .stat-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
   .sales-container {
-    padding: 1rem;
+    padding: 0.75rem; /* CORRECCIÓN: Mínimo padding en móvil pequeño */
   }
   
   .header-left h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   
   .stat-card {

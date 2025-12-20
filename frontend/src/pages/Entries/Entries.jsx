@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useContext } from "react";
 import "./Entries.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
@@ -16,6 +16,7 @@ import {
   faStar,
   faBox
 } from '@fortawesome/free-solid-svg-icons';
+import { AppContext } from "../../context/AppContext";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -35,12 +36,13 @@ const ENTRY_TYPES = {
 };
 
 export default function Entries() {
+  const { formatNicaraguaDate, formatNicaraguaDateTime } = useContext(AppContext);
   const [entries, setEntries] = useState([]);
   const [medications, setMedications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState(null);
   const [timeFilter, setTimeFilter] = useState(TIME_FILTERS.TODAY);
-  const [showDateFilter, setShowDateFilter] = useState(false);
+  const [showDateFilter, setShowDateFilter] = useState(true);
   const [expandedEntries, setExpandedEntries] = useState({});
 
   useEffect(() => {
@@ -204,40 +206,7 @@ export default function Entries() {
     }
   };
 
-  // Entradas filtradas
-  const filteredEntries = useMemo(() => {
-    let filtered = applyTimeFilter(entries);
-    
-    // Aplicar filtro de fecha específica si existe
-    if (selectedDate) {
-      filtered = filtered.filter(entry => 
-        formatShortDate(entry.MovementDate) === selectedDate
-      );
-    }
-    
-    return filtered;
-  }, [entries, timeFilter, selectedDate]);
-
-  // Funciones de formato
-  const formatDate = (dateString) => {
-    if (!dateString) return "Fecha no disponible";
-    
-    try {
-      const date = new Date(dateString);
-      if (isNaN(date.getTime())) return "Fecha inválida";
-      
-      return date.toLocaleDateString('es-NI', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-    } catch (error) {
-      return "Fecha inválida";
-    }
-  };
-
+  // Función para formato de fecha corta (local)
   const formatShortDate = (dateString) => {
     if (!dateString) return "";
     
@@ -255,6 +224,7 @@ export default function Entries() {
     }
   };
 
+  // Función para formato de día (local)
   const formatDayName = (dateString) => {
     if (!dateString) return "";
     
@@ -268,21 +238,19 @@ export default function Entries() {
     }
   };
 
-  const formatTime = (dateString) => {
-    if (!dateString) return "";
+  // Entradas filtradas
+  const filteredEntries = useMemo(() => {
+    let filtered = applyTimeFilter(entries);
     
-    try {
-      const date = new Date(dateString);
-      if (isNaN(date.getTime())) return "";
-      
-      return date.toLocaleTimeString('es-NI', {
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-    } catch (error) {
-      return "";
+    // Aplicar filtro de fecha específica si existe
+    if (selectedDate) {
+      filtered = filtered.filter(entry => 
+        formatShortDate(entry.MovementDate) === selectedDate
+      );
     }
-  };
+    
+    return filtered;
+  }, [entries, timeFilter, selectedDate]);
 
   const toggleExpandEntry = (entryId) => {
     setExpandedEntries(prev => ({
@@ -367,7 +335,7 @@ export default function Entries() {
         </div>
       </div>
 
-      {/* Filtros de tiempo y fecha */}
+      {/* Filtros de tiempo y fecha - ESTOS DEBERÍAN SER VISIBLES AHORA */}
       {showDateFilter && (
         <div className="date-filter-section">
           <div className="date-filter-header">
@@ -542,7 +510,8 @@ export default function Entries() {
                 >
                   <div className="entry-header-info">
                     <div className="entry-date-time">
-                      <h3 className="entry-main-date">{formatDate(entry.MovementDate)}</h3>
+                      {/* CORREGIDO: Usando función del contexto para hora de Nicaragua */}
+                      <h3 className="entry-main-date">{formatNicaraguaDateTime(entry.MovementDate)}</h3>
                       <span className="entry-day">{formatDayName(entry.MovementDate)}</span>
                     </div>
                     <div className="entry-header-summary">
@@ -596,7 +565,7 @@ export default function Entries() {
                         <div className="entry-detail-row">
                           <div className="entry-detail-label">Fecha de expiración:</div>
                           <div className="entry-detail-value">
-                            {formatShortDate(entry.ExpirationDate)}
+                            {formatNicaraguaDate(entry.ExpirationDate)}
                           </div>
                         </div>
                       )}
@@ -604,7 +573,7 @@ export default function Entries() {
                       <div className="entry-detail-row">
                         <div className="entry-detail-label">Fecha de registro:</div>
                         <div className="entry-detail-value">
-                          {formatDate(entry.MovementDate)}
+                          {formatNicaraguaDateTime(entry.MovementDate)}
                         </div>
                       </div>
                     </div>
