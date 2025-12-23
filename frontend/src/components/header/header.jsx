@@ -1,26 +1,35 @@
-import "./header.css";
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { AuthContext } from '../../context/AuthContext';
+import './Header.css';
 
-export default function Header({ toggleSidebar, sidebarActive }) {
+const Header = ({ toggleSidebar, sidebarActive }) => {
+  const { user, logout } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <header className="header">
-      {/* Botón hamburguesa a la izquierda */}
-      <button 
-        className="menu-toggle-btn"
-        onClick={toggleSidebar}
-        aria-label={sidebarActive ? "Cerrar menú" : "Abrir menú"}
-      >
-        <FontAwesomeIcon icon={sidebarActive ? faTimes : faBars} />
-      </button>
-      
-      {/* Logo/Título centrado */}
-      <div className="header-center">
-        <h1>Farmacia Sory</h1>
+      <div className="header-left">
+        <button 
+          className="menu-toggle"
+          onClick={toggleSidebar}
+          aria-label="Toggle menu"
+          aria-expanded={sidebarActive}
+        >
+          <FontAwesomeIcon icon={faBars} />
+        </button>
+        
+        <div className="header-title">
+          <h1>Farmacia Sory</h1>
+          <p className="header-subtitle">Sistema de Gestión Farmacéutica</p>
+        </div>
       </div>
-      
-      {/* Espacio a la derecha para balancear */}
-      <div className="header-right"></div>
     </header>
   );
-}
+};
+
+export default Header;

@@ -1,28 +1,35 @@
-/* Header.css - Versión corregida */
+/* Header.css - Corregido */
 .header {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 20px;
-  background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
-  color: var(--white);
-  box-shadow: var(--shadow);
+  padding: 0 20px;
+  background: linear-gradient(135deg, #BA0505, #9A0404);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  height: 70px;
+  height: var(--header-height);
   box-sizing: border-box;
+  gap: 20px;
 }
 
-/* Botón hamburguesa */
-.menu-toggle-btn {
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.menu-toggle {
   background: none;
   border: none;
-  color: var(--white);
-  font-size: 1.5rem;
+  color: white;
+  font-size: 1.4rem;
   cursor: pointer;
   padding: 8px;
   border-radius: 4px;
@@ -32,34 +39,97 @@
   min-width: 44px;
   min-height: 44px;
   transition: background-color 0.3s ease;
-  z-index: 1001;
 }
 
-.menu-toggle-btn:hover {
+.menu-toggle:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Centro del header */
-.header-center {
+.header-title {
   flex: 1;
-  text-align: center;
-  padding: 0 10px;
 }
 
-.header-center h1 {
-  color: var(--white);
-  margin: 0;
-  font-size: 1.5rem;
+.header-title h1 {
+  color: white;
+  margin: 0 0 4px 0;
+  font-size: 1.4rem;
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Lado derecho del header */
+.header-subtitle {
+  margin: 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+}
+
 .header-right {
-  min-width: 44px;
-  visibility: hidden;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.user-info:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 /* ========== RESPONSIVE ========== */
@@ -67,50 +137,71 @@
 /* Desktop */
 @media (min-width: 769px) {
   .header {
-    position: relative;
-    height: auto;
-    padding: 15px 30px;
+    padding: 0 30px;
+    left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
   }
   
-  .menu-toggle-btn {
+  .menu-toggle {
     display: none;
   }
   
-  .header-center h1 {
-    font-size: 1.8rem;
+  .header-title h1 {
+    font-size: 1.6rem;
   }
 }
 
 /* Tablet y móvil */
 @media (max-width: 768px) {
   .header {
-    padding: 12px 15px;
-    height: 64px;
+    padding: 0 15px;
+    width: 100%;
+    left: 0;
   }
   
-  .header-center h1 {
-    font-size: 1.3rem;
+  .header-title h1 {
+    font-size: 1.2rem;
   }
   
-  .menu-toggle-btn {
-    font-size: 1.3rem;
+  .user-details {
+    display: none;
+  }
+  
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+  
+  .logout-btn {
+    width: 40px;
+    height: 40px;
   }
 }
 
 /* Móvil pequeño */
 @media (max-width: 480px) {
   .header {
-    padding: 10px;
+    padding: 0 10px;
     height: 60px;
+    gap: 10px;
   }
   
-  .header-center h1 {
-    font-size: 1.2rem;
+  .header-left {
+    gap: 10px;
   }
   
-  .menu-toggle-btn {
-    font-size: 1.2rem;
+  .header-title h1 {
+    font-size: 1.1rem;
+  }
+  
+  .menu-toggle {
     min-width: 40px;
     min-height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .user-info {
+    padding: 6px;
   }
 }
