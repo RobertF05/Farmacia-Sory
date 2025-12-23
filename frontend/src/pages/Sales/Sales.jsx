@@ -369,15 +369,6 @@ export default function Sales() {
           </div>
           
           <div className="specific-date-controls">
-            <div className="date-input-group">
-              <label htmlFor="date-picker">Fecha específica:</label>
-              <input
-                type="date"
-                id="date-picker"
-                value={selectedDate || ''}
-                onChange={(e) => handleDateSelect(e.target.value)}
-              />
-            </div>
             <button 
               className="clear-filters-btn"
               onClick={clearFilters}
