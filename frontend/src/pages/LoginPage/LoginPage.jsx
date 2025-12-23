@@ -4,6 +4,9 @@ import { IoEyeSharp } from "react-icons/io5";
 import './LoginPage.css';
 import { AuthContext } from '../../context/AuthContext';
 
+// Importar la imagen del logo
+import logoImage from '../../../public/Farmacia Sory Logo.png'; // Ajusta la ruta según donde tengas tu imagen
+
 // Configuración de bloqueo
 const BLOCK_CONFIG = {
   initialBlock: 15,    // minutos
@@ -293,7 +296,12 @@ const LoginPage = () => {
             <form className="login-form" onSubmit={handleLogin}>
               <div className="form-header">
                 <div className="logo-container">
-                  <h1 className="pharmacy-logo">💊 Farmacia Sory</h1>
+                  {/* Reemplazar el texto con imagen del logo */}
+                  <img 
+                    src={logoImage} 
+                    alt="Farmacia Sory" 
+                    className="pharmacy-logo-image"
+                  />
                 </div>
                 <h2>Iniciar Sesión</h2>
                 <p>Ingresa tus credenciales para acceder al sistema de farmacia</p>
@@ -374,9 +382,6 @@ const LoginPage = () => {
               <div className="login-footer">
                 <p className="footer-text">
                   Sistema de Gestión Farmacéutica v1.0
-                </p>
-                <p className="footer-note">
-                  Para pruebas puedes usar: admin / admin123
                 </p>
               </div>
             </form>

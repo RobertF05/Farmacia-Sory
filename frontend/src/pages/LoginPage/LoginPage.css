@@ -147,22 +147,42 @@ body {
 
 .logo-container {
   margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
-.pharmacy-logo {
-  font-size: 32px;
+/* Estilos para la imagen del logo */
+.pharmacy-logo-image {
+  max-width: 180px;
+  max-height: 180px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  padding: 10px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+.pharmacy-logo-image:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos para el título debajo del logo */
+.pharmacy-title {
+  font-size: 28px;
   font-weight: 800;
   color: var(--primary);
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
-.pharmacy-logo::before {
-  content: '💊';
-  font-size: 36px;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .form-header h2 {
@@ -401,8 +421,13 @@ body {
     font-size: 24px;
   }
   
-  .pharmacy-logo {
-    font-size: 28px;
+  .pharmacy-logo-image {
+    max-width: 150px;
+    max-height: 150px;
+  }
+  
+  .pharmacy-title {
+    font-size: 24px;
   }
 }
 
@@ -423,10 +448,13 @@ body {
     padding: 16px;
   }
   
-  .pharmacy-logo {
-    font-size: 24px;
-    flex-direction: column;
-    gap: 8px;
+  .pharmacy-logo-image {
+    max-width: 120px;
+    max-height: 120px;
+  }
+  
+  .pharmacy-title {
+    font-size: 20px;
   }
   
   .login-page::before,
