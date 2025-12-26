@@ -11,7 +11,7 @@ import {
   faPills
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../context/AuthContext';
-import './Sidebar.css';
+import './sidebar.css';
 
 const Sidebar = ({ setPage, active, setActive, currentPage }) => {
   const { logout } = useContext(AuthContext);

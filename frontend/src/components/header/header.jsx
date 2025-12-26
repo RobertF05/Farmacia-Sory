@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../context/AuthContext';
-import './Header.css';
+import './header.css';
 
 const Header = ({ toggleSidebar, sidebarActive }) => {
   const { user, logout } = useContext(AuthContext);
