@@ -1,13 +1,13 @@
 import { useState, useContext, useEffect } from "react";
-import { AuthContext } from "./context/AuthContext";
-import Header from "./components/Header/Header";
-import Sidebar from "./components/Sidebar/Sidebar";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import Medications from "./pages/Medications/Medications";
-import EditMedications from "./pages/EditMedications/EditMedications";
-import Sales from "./pages/Sales/Sales";
-import Entries from "./pages/Entries/Entries";
-import ExpiredProducts from "./pages/ExpiredProducts/ExpiredProducts";
+import { AuthContext } from "./context/AuthContext.jsx";
+import Header from "./components/header/header.jsx";
+import Sidebar from "./components/sidebar/sidebar.jsx";
+import LoginPage from "./pages/LoginPage/LoginPage.jsx";
+import Medications from "./pages/Medications/Medications.jsx";
+import EditMedications from "./pages/EditMedications/EditMedications.jsx";
+import Sales from "./pages/Sales/Sales.jsx";
+import Entries from "./pages/Entries/Entries.jsx";
+import ExpiredProducts from "./pages/ExpiredProducts/ExpiredProducts.jsx";
 import "./App.css";
 
 export default function App() {
