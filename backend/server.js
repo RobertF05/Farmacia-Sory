@@ -54,12 +54,19 @@ app.use("/medications", (req, res, next) => {
   res.redirect(308, `/api${req.originalUrl}`);
 });
 
-// Error handling para rutas no encontradas
-app.use("*", (req, res) => {
+// ✅ USA ESTO EN SU LUGAR (corregido):
+app.use((req, res) => {
   res.status(404).json({
     error: "Ruta no encontrada",
     path: req.originalUrl,
-    available_endpoints: ["/api/medications", "/api/users/login", "/api/movements"]
+    available_endpoints: [
+      "/",
+      "/health",
+      "/api/medications",
+      "/api/users/login", 
+      "/api/movements"
+    ],
+    hint: "Recuerda que todas las rutas de la API empiezan con /api"
   });
 });
 
