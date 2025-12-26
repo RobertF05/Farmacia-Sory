@@ -12,7 +12,7 @@ const app = express();
 
 // CORS (cuando tengas el dominio del frontend reemplazar "*" por ese dominio)
 app.use(cors({
-  origin: "*", // Ej: "https://tu-app.vercel.app"
+  origin: "https://farmacia-sory.vercel.app", // Ej: "https://tu-app.vercel.app"
 }));
 
 app.use(express.json());
