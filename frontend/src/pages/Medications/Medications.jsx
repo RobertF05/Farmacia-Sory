@@ -153,7 +153,7 @@ export default function Medications() {
   };
 
   const formatPrice = (price) => {
-    return `$${parseFloat(price || 0).toFixed(2)}`;
+    return `C$${parseFloat(price || 0).toFixed(2)}`;
   };
 
   const showNotification = (message, type = "success") => {
@@ -412,7 +412,7 @@ const handleSellProducts = async () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label>Precio Unitario ($) *</label>
+                  <label>Precio Unitario (C$) *</label>
                   <input
                     type="number"
                     name="Price"
